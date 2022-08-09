@@ -22,6 +22,6 @@ from django.conf import settings
 from cursos_api.settings import MEDIA_ROOT
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', admin.site.urls),
     path('curso/', include('curso.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
