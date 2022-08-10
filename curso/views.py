@@ -1,5 +1,3 @@
-import imp
-from winreg import QueryReflectionKey
 from django.shortcuts import render
 from rest_framework import viewsets
 from .serializers import CursoSerializer, UserSerializer

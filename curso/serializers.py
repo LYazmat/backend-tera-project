@@ -10,7 +10,8 @@ class AreaSerializer(serializers.ModelSerializer):
 
 class CursoSerializer(serializers.ModelSerializer):
 
-    areas = AreaSerializer(read_only=True, many=True)
+    # areas = AreaSerializer(read_only=True, many=True)
+    areas_obj = AreaSerializer(source='areas', read_only=True, many=True)    
 
     class Meta:
         model = Curso
