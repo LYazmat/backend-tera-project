@@ -22,8 +22,14 @@ from django.conf import settings
 
 from cursos_api.settings import MEDIA_ROOT
 
+from rest_framework.routers import DefaultRouter
+from curso.views import UserViewSet
+
+router = DefaultRouter()
+router.register('user', UserViewSet, basename='UserModel')
+
 urlpatterns = [
     path('', RedirectView.as_view(url='admin/', permanent=True)),
     path('admin/', admin.site.urls),
     path('curso/', include('curso.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) + router.urls
