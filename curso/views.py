@@ -18,7 +18,6 @@ class CursoViewSet(viewsets.ModelViewSet):
         search = self.request.query_params.get('descricao', None)
         if search:
             queryset = queryset.filter(reduce(lambda x, y: x & y, [Q(title__icontains=word) for word in search.split(' ')]))
-            print(search.split(' '))
         return queryset.prefetch_related('areas')
 
 
@@ -29,9 +28,7 @@ class UserViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         usuario = self.request.query_params.get('usuario', None)
         senha = self.request.query_params.get('senha', None)
-        # reduce(lambda x, y: x | y, [Q(name__icontains=word) for word in list]))
         if usuario and senha:
-            print(usuario, senha)
             queryset = User.objects.filter(username=usuario)
             user = queryset.first()
             if user:
